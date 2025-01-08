@@ -21,6 +21,7 @@ export const en = {
   },
   chat: {
     send_to_all: 'Broadcast Message',
+    teacher: 'Teacher',
   },
   disabled: 'Disabled',
   whiteboard: {
@@ -460,6 +461,7 @@ export const en = {
       'Congratulations to {reason1} and {reason2} other students for getting a star',
     screen_permission_denied:
       'Before using screen sharing, please turn on the screenshot permission',
+    screen_using: 'Screen sharing is currently in use, please try again later',
     stream_window_full: 'The video window has reached the limitation of {reason}',
     save_success: 'Save successfully',
     save_error: 'Failed to save snapshot of the whiteboard',
@@ -555,7 +557,8 @@ export const en = {
   fcr_share_title_all_student: 'Student Screen Share',
   fcr_share_title_any_student: 'You can assign a student to share the screen',
   fcr_share_selected: '{reason} Selected',
-  fcr_share_sharing: "Sharing {reason}'s screen",
+  // fcr_share_sharing: "Sharing {reason}'s screen",
+  fcr_share_sharing: "Sharing screen",
   fcr_share_authorized_control: 'The teacher has authorized you to control the screen',
   fcr_share_forbidden_control: 'The teacher has forbidden your screen control',
   fcr_share_device_not_support: '{reason}‘s device does not support remote control',

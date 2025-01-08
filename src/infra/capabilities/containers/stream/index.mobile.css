@@ -87,6 +87,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 }
 .fcr-stream-player-mobile {
   background: rgba(67, 67, 78, 1);
@@ -95,10 +96,10 @@
 .fcr-stream-player-mobil-placeholder {
   position: absolute;
   background: rgba(66, 98, 255, 1);
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  line-height: 30px;
+  line-height: 35px;
   text-align: center;
   color: #fff;
   font-size: 12px;

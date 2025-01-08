@@ -46,6 +46,7 @@ export const StreamPlayerMobile = observer<FC<StreamPlayerMobileProps>>(
             'fcr-stream-player-mobil-placeholder-teacher': isTeacher,
           })}>
           {generateShortUserName(userName)}
+            {/* 学员 */}
         </div>
         <TrackPlayer stream={stream} />
       </div>
@@ -91,6 +92,7 @@ export const LocalTrackPlayerMobile = observer(({ stream }: { stream: EduStreamU
       }}>
       <div className={classNames('fcr-stream-player-mobil-placeholder')}>
         {generateShortUserName(userName)}
+        {/* 学员 */}
       </div>
       {!stream?.isCameraMuted && (
         <LocalTrackPlayer

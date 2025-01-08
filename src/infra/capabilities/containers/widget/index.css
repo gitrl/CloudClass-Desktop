@@ -23,3 +23,29 @@
   border-color: #fff;
   pointer-events: none;
 }
+
+.widget-slot-chat-mobile-diy{
+  position: relative;
+}
+.fcr-hands-up-action-sheet-call-mobile-diy{
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(249, 249, 252, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    z-index: 11;
+    background: rgba(59, 62, 72, 1);
+}
+.fcr-mobile-inter-room-info-diy{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: #4752dd;
+}

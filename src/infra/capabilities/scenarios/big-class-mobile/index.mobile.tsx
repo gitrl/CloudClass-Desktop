@@ -167,7 +167,7 @@ const AfterClassMobileDialog = observer(() => {
       <div className="fcr-after-class-mobile-dialog">
         <div className="fcr-after-class-mobile-dialog-img"></div>
         <h1>{transI18n('fcr_H5_status_upcoming')}</h1>
-        <h2>{transI18n('fcr_H5_tips_chat_book')}</h2>
+        {/* <h2>{transI18n('fcr_H5_tips_chat_book')}</h2> */}
         <div className="fcr-after-class-mobile-dialog-btn" onClick={() => setLeaveRoom(true)}>
           {transI18n('fcr_h5_label_gotit')}
         </div>
@@ -200,30 +200,31 @@ const AutoPlayFailedTip = observer(() => {
   const transI18n = useI18n();
   useEffect(() => {
     if (showAutoPlayFailedTip) {
-      window.addEventListener('touchstart', closeAutoPlayFailedTip, { once: true });
+      // window.addEventListener('touchstart', closeAutoPlayFailedTip, { once: true });
     }
-    return () => window.removeEventListener('touchstart', closeAutoPlayFailedTip);
+    // return () => window.removeEventListener('touchstart', closeAutoPlayFailedTip);
   }, [showAutoPlayFailedTip]);
-  return showAutoPlayFailedTip ? (
-    <div
-      className={classnames(
-        'fcr-mobile-auto-play-failed fcr-absolute fcr-top-0 fcr-left-0 fcr-w-full fcr-h-full fcr-flex fcr-justify-center',
-        { 'fcr-mobile-auto-play-failed-landscape': isLandscape },
-        {
-          'fcr-mobile-auto-play-failed-no-board':
-            (!mounted || !teacherCameraStream) && !isLandscape,
-        },
-      )}>
-      <div>
-        <SvgImgMobile
-          landscape={isLandscape}
-          forceLandscape={forceLandscape}
-          type={SvgIconEnum.AUTO_PLAY_FAILED}
-          size={130}></SvgImgMobile>
-        <div className="fcr-mobile-auto-play-failed-btn">{transI18n('fcr_H5_click_to_play')}</div>
-      </div>
-    </div>
-  ) : null;
+  return null
+  // return showAutoPlayFailedTip ? (
+  //   <div
+  //     className={classnames(
+  //       'fcr-mobile-auto-play-failed fcr-absolute fcr-top-0 fcr-left-0 fcr-w-full fcr-h-full fcr-flex fcr-justify-center',
+  //       { 'fcr-mobile-auto-play-failed-landscape': isLandscape },
+  //       {
+  //         'fcr-mobile-auto-play-failed-no-board':
+  //           (!mounted || !teacherCameraStream) && !isLandscape,
+  //       },
+  //     )}>
+  //     <div>
+  //       <SvgImgMobile
+  //         landscape={isLandscape}
+  //         forceLandscape={forceLandscape}
+  //         type={SvgIconEnum.AUTO_PLAY_FAILED}
+  //         size={130}></SvgImgMobile>
+  //       <div className="fcr-mobile-auto-play-failed-btn">{transI18n('fcr_H5_click_to_play')}</div>
+  //     </div>
+  //   </div>
+  // ) : null;
 });
 export const DialogContainerMobile: React.FC<unknown> = observer(() => {
   const { shareUIStore } = useStore();

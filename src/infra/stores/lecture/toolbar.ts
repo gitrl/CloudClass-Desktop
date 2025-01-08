@@ -59,30 +59,30 @@ export class LectrueToolbarUIStore extends ToolbarUIStore {
           icon: 'hand',
           category: ToolbarItemCategory.Hand,
         }),
-        ToolbarItem.fromData({
-          value: 'save',
-          label: 'scaffold.save',
-          icon: 'save-ghost',
-          category: ToolbarItemCategory.Save,
-        }),
-        {
-          value: 'cloud',
-          label: 'scaffold.cloud_storage',
-          icon: 'cloud',
-          category: ToolbarItemCategory.CloudStorage,
-        },
+        // ToolbarItem.fromData({
+        //   value: 'save',
+        //   label: 'scaffold.save',
+        //   icon: 'save-ghost',
+        //   category: ToolbarItemCategory.Save,
+        // }),
+        // {
+        //   value: 'cloud',
+        //   label: 'scaffold.cloud_storage',
+        //   icon: 'cloud',
+        //   category: ToolbarItemCategory.CloudStorage,
+        // },
         {
           value: 'tools',
           label: 'scaffold.tools',
           icon: 'tools',
           category: ToolbarItemCategory.Cabinet,
         },
-        {
-          value: 'register',
-          label: 'scaffold.register',
-          icon: 'register',
-          category: ToolbarItemCategory.Roster,
-        },
+        // {
+        //   value: 'register',
+        //   label: 'scaffold.register',
+        //   icon: 'register',
+        //   category: ToolbarItemCategory.Roster,
+        // },
       ];
 
       if (AgoraRteEngineConfig.platform === AgoraRteRuntimePlatform.Electron) {
@@ -105,12 +105,12 @@ export class LectrueToolbarUIStore extends ToolbarUIStore {
           icon: 'tools',
           category: ToolbarItemCategory.Cabinet,
         },
-        {
-          value: 'register',
-          label: 'scaffold.register',
-          icon: 'register',
-          category: ToolbarItemCategory.Roster,
-        },
+        // {
+        //   value: 'register',
+        //   label: 'scaffold.register',
+        //   icon: 'register',
+        //   category: ToolbarItemCategory.Roster,
+        // },
       ];
     }
     return _tools;
@@ -157,6 +157,12 @@ export class LectrueToolbarUIStore extends ToolbarUIStore {
         icon: 'eraser',
         category: ToolbarItemCategory.Eraser,
       }),
+      {
+        value: 'tools',
+        label: 'scaffold.tools',
+        icon: 'tools',
+        category: ToolbarItemCategory.Cabinet,
+      },
     ];
   }
 }

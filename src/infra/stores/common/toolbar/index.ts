@@ -384,7 +384,10 @@ export class ToolbarUIStore extends EduUIStoreBase {
     switch (id) {
       case CabinetItemEnum.ScreenShare:
         if (this.isScreenSharing) {
-          this.classroomStore.mediaStore.stopScreenShareCapture();
+          // 正在屏幕共享，点击按钮出现提醒
+          // const { role } = EduClassroomConfig.shared.sessionInfo;
+          this.shareUIStore.addToast(transI18n('toast2.screen_using'), 'warning');
+          // this.classroomStore.mediaStore.stopScreenShareCapture();
           return;
         }
         this.startLocalScreenShare();
@@ -609,6 +612,7 @@ export class ToolbarUIStore extends EduUIStoreBase {
    */
   @computed
   get cabinetItems(): CabinetItem[] {
+    const { role } = EduClassroomConfig.shared.sessionInfo;
     const extapps = [
       {
         id: CabinetItemEnum.ScreenShare,
@@ -620,11 +624,11 @@ export class ToolbarUIStore extends EduUIStoreBase {
         iconType: 'group-discuss',
         name: transI18n('scaffold.breakout_room'),
       },
-      {
-        id: CabinetItemEnum.Whiteboard,
-        iconType: 'whiteboard',
-        name: transI18n('scaffold.whiteboard'),
-      },
+      // {
+      //   id: CabinetItemEnum.Whiteboard,
+      //   iconType: 'whiteboard',
+      //   name: transI18n('scaffold.whiteboard'),
+      // },
       {
         id: CabinetItemEnum.VideoGallery,
         iconType: 'video-gallery',
@@ -636,11 +640,18 @@ export class ToolbarUIStore extends EduUIStoreBase {
         name: transI18n('scaffold.laser_pointer'),
       },
     ];
-
+    // 学生端屏蔽白板入口
+    let obj ={
+        id: CabinetItemEnum.Whiteboard,
+        iconType: 'whiteboard',
+        name: transI18n('scaffold.whiteboard'),
+    }
+    if(role === 1){
+      extapps.push(obj)
+    }
     let apps = this.extensionApi.cabinetItems.concat(
       extapps.filter((item) => this.allowedCabinetItems.includes(item.id)),
     );
-
     const excludes = new Set<string>();
 
     if (EduClassroomConfig.shared.sessionInfo.role === EduRoleTypeEnum.assistant) {
@@ -658,9 +669,12 @@ export class ToolbarUIStore extends EduUIStoreBase {
     if (EduRteEngineConfig.platform !== AgoraRteRuntimePlatform.Electron) {
       excludes.add(CabinetItemEnum.VideoGallery);
     }
-
     apps = apps.filter((it) => !excludes.has(it.id));
-
+    // 学生端屏蔽计时器入口
+    let index = apps.findIndex(v => v.id ==='countdownTimer')
+    if(index >-1 && role === 2){
+      apps.splice(index,1)
+    }
     return apps;
   }
   /**

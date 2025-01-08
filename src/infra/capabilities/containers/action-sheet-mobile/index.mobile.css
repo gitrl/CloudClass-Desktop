@@ -157,6 +157,7 @@
   border-top-right-radius: 24px;
   height: 217px;
   position: fixed;
+  /* bottom: 0 !important; */
   bottom: -218px;
   left: 0;
   right: 0;
@@ -216,6 +217,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* display: none; */
 }
 .fcr-hands-up-action-sheet-mobile-device .fcr-hands-up-action-sheet-mobile-close {
   top: 10px;

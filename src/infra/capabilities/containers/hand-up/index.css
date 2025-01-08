@@ -33,7 +33,7 @@
 .students-hands-up .hands-up-card {
   width: 210px !important;
   height: 246px !important;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .card-hands-up-active {
