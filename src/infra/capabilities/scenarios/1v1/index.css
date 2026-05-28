@@ -1,0 +1,20 @@
+.one-on-one-class-room-mask {
+  width: 100%;
+  height: 100vh;
+  padding: 16px;
+  background-color: #2F2F2F;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 124px;
+}
+
+.one-on-one-class-room-mask .one-on-one-class-room-mask-description {
+  flex: 1;
+  font-size: 80px;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}

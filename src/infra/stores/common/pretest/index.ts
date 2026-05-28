@@ -53,7 +53,7 @@ export class PretestUIStore extends EduUIStoreBase {
   @observable currentEffectType: EffectType =
     EduRteEngineConfig.platform === EduRteRuntimePlatform.Web ? 'virtualBackground' : 'beauty'; // 视频效果选项
   @observable beautyEffectOptions: AGBeautyEffect = DEFAULT_BEAUTY_OPTION; // 美颜参数
-  @observable currentPretestTab: DeviceType | 'stage' = 'video'; // 音视频选项
+  @observable currentPretestTab: DeviceType | 'stage' = 'audio'; // 音视频选项
   @observable aiDenoiserEnabled = false; // 是否开启AI降噪
   @observable backgroundImage = []; // 虚拟背景
   @observable currentVirtualBackground = 'none'; // 当前选择虚拟背景选项

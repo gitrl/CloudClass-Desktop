@@ -20,6 +20,7 @@ import Room from '../room';
 import { useState } from 'react';
 import { EduClassroomConfig } from 'agora-edu-core';
 import ImgGuide from "./img_guide.png"
+import './index.css'
 
 const MaskWidget = (props: {onClick?: () => void}) => {
   return (
@@ -31,7 +32,7 @@ const MaskWidget = (props: {onClick?: () => void}) => {
     </div>
   )
 }
-
+ 
 export const OneToOneScenario = () => {
   const layoutCls = classnames('edu-room', 'one-on-one-class-room');
   const { shareUIStore } = useStore();

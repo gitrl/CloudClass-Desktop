@@ -10,7 +10,7 @@ export const PretestStage = observer(() => {
     <div
       className="fcr-flex fcr-flex-grow fcr-flex-col"
       style={{
-        padding: '60px 30px 40px',
+        padding: '60px 30px 10px',
         gap: 20,
       }}>
       <StageManager />

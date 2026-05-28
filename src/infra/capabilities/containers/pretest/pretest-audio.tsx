@@ -34,6 +34,9 @@ export const PretestVoice = observer(() => {
         padding: '60px 30px 40px',
         gap: 20,
       }}>
+        <div style={{ color:'red',fontSize:15,fontWeight:600}}>
+          为获得最佳上课体验，请您课前根据下方指引完成麦克风与扬声器测试。
+        </div>
       <MicrophoneTest />
       <SpeakerTest />
     </div>
@@ -42,7 +45,7 @@ export const PretestVoice = observer(() => {
 
 const MicrophoneTest = observer(() => {
   const {
-    pretestUIStore: { setRecordingDevice, currentRecordingDeviceId, recordingDevicesList },
+    pretestUIStore: { setRecordingDevice, currentRecordingDeviceId, recordingDevicesList ,localVolume},
   } = useStore();
   const {
     deviceSettingUIStore: { setUserHasSelectedAudioRecordingDevice },
@@ -50,7 +53,13 @@ const MicrophoneTest = observer(() => {
   const transI18n = useI18n();
   return (
     <ItemCard>
-      <ItemCardTitle>{transI18n('media.microphone')}</ItemCardTitle>
+      <ItemCardTitle>{transI18n('media.microphone')}
+        <div style={{ marginLeft: 10 ,color:'red'}}>
+          音量：{localVolume.toFixed(0) }
+          {/* 如果音量小于50，提示用户增加音量 */}
+          {localVolume < 50 && <span style={{ color:'red',fontSize:14,fontWeight:600,marginLeft:15}}>音量过小请检查设备</span>}
+        </div>
+      </ItemCardTitle>
       <ItemForm>
         <Field
           label=""
@@ -76,6 +85,7 @@ const SpeakerTest = observer(() => {
     pretestUIStore: {
       playbackDevicesList,
       currentPlaybackDeviceId,
+      localPlaybackTestVolume,
       setPlaybackDevice,
       startPlaybackDeviceTest,
       stopPlaybackDeviceTest,
@@ -112,7 +122,11 @@ const SpeakerTest = observer(() => {
 
   return (
     <ItemCard>
-      <ItemCardTitle>{transI18n('media.speaker')}</ItemCardTitle>
+      <ItemCardTitle>{transI18n('media.speaker')}
+        {/* <div style={{ marginLeft: 10 ,color:'red'}}>
+          扬声器测试音量：{parseInt(localPlaybackTestVolume) }
+        </div> */}
+      </ItemCardTitle>
       <ItemForm>
         <Field
           label=""
@@ -135,6 +149,7 @@ const SpeakerTest = observer(() => {
           {transI18n('pretest.test')}
         </Button>
       </ItemForm>
+      
       {aiDenoiserSupported && (
         <React.Fragment>
           <ItemCardTitle>{transI18n('pretest.audio_noise_cancellation')}</ItemCardTitle>
@@ -164,14 +179,14 @@ const SpeakerTest = observer(() => {
 
 const VolumeDance: FC = observer(() => {
   const {
-    pretestUIStore: { localPreviewVolume },
+    pretestUIStore: { localPreviewVolume , localVolume},
   } = useStore();
 
   return (
-    <div className="fcr-flex" style={{ gap: 10 }}>
-      <SvgImg type={SvgIconEnum.MICROPHONE_ON} />
-      <Volume maxLength={18} cursor={localPreviewVolume} peek={100} />
-    </div>
+      <div className="fcr-flex fcr-items-center" style={{ gap: 10 }}>
+        <SvgImg type={SvgIconEnum.MICROPHONE_ON} />
+        <Volume maxLength={18} cursor={localPreviewVolume} peek={100} />
+      </div>
   );
 });
 

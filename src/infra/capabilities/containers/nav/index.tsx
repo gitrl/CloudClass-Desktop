@@ -245,21 +245,22 @@ const NavigationBarRecordAction = observer(
           <i className="record-heartbeat animate-pulse"></i>
         )}
         {payload.text && <span className="record-tips">{payload.text}</span>}
-        {payload.recordStatus === RecordStatus.starting ? (
-          <SvgaPlayer className="record-icon" url={RecordLoading} width={18} height={18} loops />
-        ) : (
-          <Tooltip key={action.title} title={action.title} placement="bottom">
-            <div className="action-icon record-icon">
-              <SvgIcon
-                colors={{ iconPrimary: action.iconColor }}
-                type={action.iconType}
-                hoverType={action.iconType}
-                size={18}
-                onClick={action.onClick}
-              />
-            </div>
-          </Tooltip>
-        )}
+        {payload.recordStatus !== RecordStatus.started &&
+          (payload.recordStatus === RecordStatus.starting ? (
+            <SvgaPlayer className="record-icon" url={RecordLoading} width={18} height={18} loops />
+          ) : (
+            <Tooltip key={action.title} title={action.title} placement="bottom">
+              <div className="action-icon record-icon">
+                <SvgIcon
+                  colors={{ iconPrimary: action.iconColor }}
+                  type={action.iconType}
+                  hoverType={action.iconType}
+                  size={18}
+                  onClick={action.onClick}
+                />
+              </div>
+            </Tooltip>
+          ))}
       </div>
     ) : null;
   },
