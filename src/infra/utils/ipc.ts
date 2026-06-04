@@ -1,5 +1,5 @@
 import { AgoraRteEngineConfig, AgoraRteRuntimePlatform, Logger } from 'agora-rte-sdk';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { WindowID } from '../api';
 import type { IpcRendererEvent } from 'electron';
 import { ChannelType } from './ipc-channels';

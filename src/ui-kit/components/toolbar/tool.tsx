@@ -51,13 +51,10 @@ export const Tool: FC<ToolProps> = (props) => {
       ) : (
         <Tooltip
           title={t(label)}
-          placement="bottomLeft"
+          placement="top"
           overlayClassName="translated-tooltip"
-          mouseLeaveDelay={0}
-          align={{
-            offset: [-5, 0],
-          }}>
-          <div className={cls}>
+          mouseLeaveDelay={0}>
+          <div className={cls} onClick={() => handleToolClick && handleToolClick(value)}>
             <SvgIcon
               type={icon}
               hoverType={icon}
@@ -69,8 +66,8 @@ export const Tool: FC<ToolProps> = (props) => {
                   : {}
               }
               hoverColors={{ iconPrimary: InteractionStateColors.allow }}
-              onClick={() => handleToolClick && handleToolClick(value)}
             />
+            <span className="tool-label">{t(label)}</span>
           </div>
         </Tooltip>
       )}

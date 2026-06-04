@@ -1,3 +1,79 @@
+/* ============================================================================
+   横向工具栏（新版）
+   位置：白板区域底部居中
+   行为：所有工具水平铺开 + 图标下方有文字 label；窄屏 flex-wrap 自动换行
+   ============================================================================ */
+
+.toolbar-position-horizontal {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  z-index: 3;
+  max-width: calc(100% - 24px);
+}
+
+.toolbar-horizontal {
+  @apply fcr-bg-component;
+  border-radius: 16px;
+  box-shadow: 0px 2px 8px 0px rgba(47, 65, 146, 0.15);
+  padding: 8px 12px;
+  height: auto;
+  width: auto;
+  overflow: visible;
+}
+
+.tools-horizontal {
+  @apply fcr-flex fcr-flex-row fcr-items-end fcr-justify-center fcr-flex-wrap;
+  gap: 4px 6px;
+}
+
+/* 横向布局下，每个 tool 改为列方向（图标 + label） */
+.toolbar-horizontal .tool {
+  @apply fcr-cursor-pointer fcr-text-center fcr-relative fcr-flex fcr-flex-col fcr-items-center fcr-justify-end;
+  min-width: 58px;
+  height: auto;
+  width: auto;
+  padding: 6px 8px 4px;
+  margin: 0;
+  border-radius: 10px;
+  color: #7b88a0;
+  line-height: 1;
+  transition: background-color 0.15s;
+}
+
+.toolbar-horizontal .tool > svg {
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+
+.toolbar-horizontal .tool .tool-label {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #7b88a0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.toolbar-horizontal .tool:hover {
+  background: rgba(0, 115, 255, 0.08);
+}
+
+.toolbar-horizontal .tool:hover .tool-label {
+  color: #0073ff;
+}
+
+.toolbar-horizontal .tool .triangle-icon {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: auto;
+}
+
+/* ============================================================================
+   下面是老的右侧竖向工具栏样式，保留兼容（外部如果还有别处复用 Toolbar 不会塌）
+   ============================================================================ */
+
 .toolbar {
   height: 100%;
   @apply fcr-bg-component;
@@ -125,10 +201,6 @@
   color: #7b88a0;
 }
 
-/* .active {
-  color: #357bf6 !important;
-} */
-
 .tool.expand,
 .tool:hover {
   @apply fcr-rounded-full fcr-bg-component;
@@ -157,11 +229,9 @@
   margin: 6px 8px;
 }
 
-/* 1 5 9 */
 .expand-tool.color:nth-child(4n + 1) {
   margin-left: 0;
 }
-/* 4 8 12 */
 .expand-tool.color:nth-child(4n + 0) {
   margin-right: 0;
 }
@@ -268,47 +338,12 @@
   position: absolute;
   right: 10px;
   top: 50%;
-  /* bottom: 0; */
   transform: translate(0, -50%);
   margin: auto;
-  /* height: calc(100% - 92px - 5rem); */
   z-index: 3;
 }
 
-.toolbar-anim-hide {
-  animation: 0.5s toolbarAnimHide linear 1 forwards;
-}
-
-.toolbar-anim-show {
-  animation: 0.5s toolbarAnimShow linear 1 forwards;
-}
-
-@keyframes toolbarAnimHide {
-  0% {
-    right: 15px;
-  }
-  50% {
-    right: -60px;
-  }
-  100% {
-    right: 0px;
-  }
-}
-
-@keyframes toolbarAnimShow {
-  0% {
-    right: 0px;
-  }
-  50% {
-    right: -60px;
-  }
-  100% {
-    right: 15px;
-  }
-}
-
 .translated-tooltip {
-  /* left: 40px !important; */
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
@@ -368,7 +403,6 @@
   @apply fcr-border-b fcr-border-solid fcr-border-divider;
 }
 
-/* 3 6 9 */
 .cabinet-item:not(:nth-child(3n)) {
   @apply fcr-border-r fcr-border-solid fcr-border-divider;
 }

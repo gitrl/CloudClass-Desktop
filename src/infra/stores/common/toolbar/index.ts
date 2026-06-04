@@ -710,6 +710,27 @@ export class ToolbarUIStore extends EduUIStoreBase {
   }
 
   /**
+   * 扁平化后的工具栏列表：把 cabinet popover 里的工具（屏幕共享、分组讨论、激光笔、白板、计时器等）
+   * 直接拍平到一级，去掉原来的 "工具" cabinet 入口。供新的横向工具栏使用。
+   */
+  @computed get flatTools(): ToolbarItem[] {
+    const base = this.tools.filter((t) => t.category !== ToolbarItemCategory.Cabinet);
+
+    const cabinetAsTools = this.cabinetItems.map((item) =>
+      ToolbarItem.fromData({
+        value: item.id,
+        // cabinetItems 里的 name 已经是 transI18n 过的字符串；
+        // <Tool> 里调用的 t(label) 对非 key 的字符串会原样返回，所以可以直接当 label 用
+        label: item.name,
+        icon: item.iconType || '',
+        category: ToolbarItemCategory.CabinetItem,
+      }),
+    );
+
+    return [...base, ...cabinetAsTools];
+  }
+
+  /**
    * 截图选项列表
    * @returns
    */

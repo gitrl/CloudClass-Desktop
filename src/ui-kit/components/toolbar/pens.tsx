@@ -6,6 +6,7 @@ import { Tooltip } from '../tooltip';
 import { InteractionStateColors } from '../../utilities/state-color';
 import { ToolItem } from './tool';
 import { getPenIcon, getPenShapeIcon } from './util';
+import { useI18n } from 'agora-common-libs';
 export interface PensProps extends ToolItem {
   pens?: string[];
   activePen?: string;
@@ -124,11 +125,12 @@ export const Pens: FC<PensProps> = ({
     [handleClick, isActive],
   );
   const penIcon = getPenIcon(activePen);
+  const t = useI18n();
 
   return (
     <Tooltip
-      title={label}
-      placement="bottom"
+      title={t(label)}
+      placement="top"
       overlayClassName="translated-tooltip"
       mouseLeaveDelay={0}>
       <Popover
@@ -139,7 +141,7 @@ export const Pens: FC<PensProps> = ({
         overlayClassName="expand-tools-popover"
         trigger="hover"
         content={content}
-        placement="left">
+        placement="top">
         <div
           className="tool"
           onClick={() => {
@@ -161,6 +163,7 @@ export const Pens: FC<PensProps> = ({
             }}
           />
           <SvgImg type={SvgIconEnum.TRIANGLE_DOWN} className="triangle-icon" size={6} />
+          <span className="tool-label">{t(label)}</span>
         </div>
       </Popover>
     </Tooltip>

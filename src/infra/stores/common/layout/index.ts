@@ -1,7 +1,7 @@
 import { AgoraEduClassroomEvent, ClassroomState, EduEventCenter } from 'agora-edu-core';
 import { action, computed, observable, runInAction } from 'mobx';
 import { EduUIStoreBase } from '../base';
-import uuidv4 from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { bound } from 'agora-rte-sdk';
 
 export class LayoutUIStore extends EduUIStoreBase {

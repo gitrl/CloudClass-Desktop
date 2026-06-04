@@ -1,7 +1,7 @@
 import { AgoraWidgetController } from 'agora-edu-core';
 import { Log, Logger } from 'agora-rte-sdk';
 import { action, computed, observable } from 'mobx';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { CabinetItem } from '../stores/common/toolbar/type';
 import { AgoraExtensionRoomEvent, AgoraExtensionWidgetEvent } from './events';
 import {

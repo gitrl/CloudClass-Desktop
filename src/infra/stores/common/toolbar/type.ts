@@ -11,6 +11,8 @@ export enum ToolbarItemCategory {
   CloudStorage,
   Save,
   Hand,
+  // 从 cabinet popover 拍平上来的工具（屏幕共享/分组/激光笔/白板/计时器等）
+  CabinetItem,
 }
 
 export enum CabinetItemEnum {
