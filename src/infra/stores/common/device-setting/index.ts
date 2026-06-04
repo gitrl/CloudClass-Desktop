@@ -164,7 +164,8 @@ export class DeviceSettingUIStore extends EduUIStoreBase {
 
           // if there's a new device plugged in and no devices selected yet, switch to default device
           if (!recordingDeviceId && _newValue.length > (_oldValue?.length ?? 0)) {
-            const defaultDevice = _newValue.find((v) => v.isDefault);
+            // macOS does not expose a synthetic "default" device entry, so fall back to the first one.
+            const defaultDevice = _newValue.find((v) => v.isDefault) ?? _newValue[0];
             this.logger.info('set default audio recording device', toJS(defaultDevice));
             if (defaultDevice) {
               this._defaultSystemAudioRecordingDeviceId = defaultDevice.deviceid;
@@ -247,7 +248,8 @@ export class DeviceSettingUIStore extends EduUIStoreBase {
           });
           // if there's a new device plugged in and no devices selected yet, switch to default device
           if (!playbackDeviceId && _newValue.length > (_oldValue?.length ?? 0)) {
-            const defaultDevice = _newValue.find((v) => v.isDefault);
+            // macOS does not expose a synthetic "default" device entry, so fall back to the first one.
+            const defaultDevice = _newValue.find((v) => v.isDefault) ?? _newValue[0];
             this.logger.info('set default audio playback device', toJS(defaultDevice));
             if (defaultDevice) {
               this._defaultSystemAudioPlaybackDeviceId = defaultDevice.deviceid;
